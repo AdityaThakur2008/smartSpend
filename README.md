@@ -1,55 +1,197 @@
 # 💰 SmartSpend.ai
 
-An AI-powered personal finance management platform built with modern full-stack technologies.
+An AI-powered personal finance management platform that helps users track expenses, analyze spending patterns, and receive AI-powered financial insights.
 
-## 🚀 Tech Stack
+> 🚀 Currently under active development (Build in Public)
 
-### Backend
+---
+
+# ✨ Features
+
+## 🔐 Authentication
+
+- User Registration
+- User Login
+- JWT Authentication
+- HTTP Only Cookie Authentication
+- Protected Routes
+
+---
+
+## 💸 Transaction Management
+
+- Create Transaction
+- Get All Transactions
+- Get Transaction by ID
+- Update Transaction
+- Delete Transaction
+
+---
+
+## 📊 Dashboard Analytics
+
+- Dashboard Summary
+- Category-wise Expense Summary
+- Current Month Summary
+- Monthly Analytics
+
+---
+
+## ⚡ Advanced Features
+
+- Pagination
+- Search
+- Filtering
+- Zod Validation
+- Global Error Handling
+- Clean Architecture
+
+---
+
+# 🛠️ Tech Stack
+
+## Backend
+
 - Node.js
 - Express.js
 - PostgreSQL
 - Prisma ORM
-- JWT Authentication
-- Zod Validation
+- JWT
+- Zod
 - Docker
 - bcrypt
 
-### Database
+## Database
+
 - PostgreSQL
 
-## ✨ Current Features
+---
 
-- JWT Authentication
-- Cookie-based Authentication
-- Transaction CRUD
-- Pagination
-- Filtering
-- Search
-- Zod Validation
-- Prisma ORM
-- PostgreSQL
+# 📁 Project Structure
 
-## 📂 Project Structure
-
+```
 src/
-constants/
-controllers/
-services/
-routes/
-middlewares/
-validators/
-utils/
-lib/
+│
+├── controllers/
+├── services/
+├── routes/
+├── middlewares/
+├── validators/
+├── utils/
+├── lib/
+├── constants/
+```
 
-## 🚧 Upcoming Features
+---
 
-- Transaction Management
+# 📡 API Endpoints
+
+## Authentication
+
+POST /api/auth/register
+
+POST /api/auth/login
+
+POST /api/auth/logout
+
+GET /api/auth/me
+
+---
+
+## Transactions
+
+POST /api/transactions
+
+GET /api/transactions
+
+GET /api/transactions/:id
+
+PATCH /api/transactions/:id
+
+DELETE /api/transactions/:id
+
+---
+
+## Dashboard
+
+GET /api/dashboard/summary
+
+GET /api/dashboard/category-summary
+
+GET /api/dashboard/current-month
+
+GET /api/dashboard/monthly-summary
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone <repository-url>
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Environment Variables
+
+Create a `.env` file.
+
+```env
+DATABASE_URL=
+
+JWT_SECRET=
+
+PORT=
+```
+
+## Run Docker
+
+```bash
+docker compose up -d
+```
+
+## Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+## Run Migrations
+
+```bash
+npx prisma migrate dev
+```
+
+## Start Server
+
+```bash
+npm run dev
+```
+
+---
+
+# 🚧 Upcoming Features
+
+- AI Financial Advisor
 - Budget Planning
-- Expense Analytics
-- AI Financial Insights
-- Dashboard
-- Dockerized Deployment
+- Spending Trends
+- Smart Recommendations
+- Notifications
+- Frontend (Next.js)
+- Deployment
 
-## 📌 Status
+---
 
-🟢 Under Active Development (Build in Public)
+# 📌 Status
+
+🟢 Backend ~90% Complete
+
+🔄 AI Features In Progress
+
+🚀 Build in Public
