@@ -27,6 +27,26 @@ class DashboardController {
             data: summaryByCategory,
         });
     }
+
+    async getCurrentMonthSummary(req, res) {
+        const userId = req.user.id;
+        const currentMonthSummary = await DashboardService.currentMonthSummery(userId);
+        return res.status(200).json({
+            success: true,
+            message: "Current month summary retrieved successfully",
+            data: currentMonthSummary,
+        });
+    }
+
+    async getMonthlySummary(req, res) {
+        const userId = req.user.id;
+        const monthlySummary = await DashboardService.monthlySummary(userId);
+        return res.status(200).json({
+            success: true,
+            message: "Monthly summary retrieved successfully",
+            data: monthlySummary,
+        });
+    }
 }
 
 
