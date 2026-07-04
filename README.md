@@ -1,14 +1,14 @@
-# 💰 SmartSpend.ai
+# SmartSpend.ai
 
-An AI-powered personal finance management platform that helps users track expenses, analyze spending patterns, and receive AI-powered financial insights.
+An AI-powered personal finance management platform that helps users track expenses, analyze spending patterns, and receive personalized AI-powered financial insights.
 
-> 🚀 Currently under active development (Build in Public)
+> Currently under active development (Build in Public)
 
 ---
 
-# ✨ Features
+# Features
 
-## 🔐 Authentication
+## Authentication
 
 - User Registration
 - User Login
@@ -18,7 +18,7 @@ An AI-powered personal finance management platform that helps users track expens
 
 ---
 
-## 💸 Transaction Management
+## Transaction Management
 
 - Create Transaction
 - Get All Transactions
@@ -28,27 +28,47 @@ An AI-powered personal finance management platform that helps users track expens
 
 ---
 
-## 📊 Dashboard Analytics
+## Dashboard Analytics
 
 - Dashboard Summary
 - Category-wise Expense Summary
 - Current Month Summary
-- Monthly Analytics
+- Monthly Income vs Expense Analytics
+- Recent Transactions
 
 ---
 
-## ⚡ Advanced Features
+## AI Financial Advisor
+
+Generate personalized financial insights based on your transaction history.
+
+AI provides:
+
+- Spending Analysis
+- Budget Recommendations
+- Saving Suggestions
+- Overspending Detection
+- Personalized Financial Tips
+
+---
+
+## Advanced Features
 
 - Pagination
 - Search
 - Filtering
+- Prisma Aggregation
+- Prisma GroupBy
 - Zod Validation
 - Global Error Handling
-- Clean Architecture
+- Layered Architecture
+- Prompt Builder
+- Gemini AI Provider
+- Clean Service-Based Architecture
 
 ---
 
-# 🛠️ Tech Stack
+# Tech Stack
 
 ## Backend
 
@@ -56,8 +76,9 @@ An AI-powered personal finance management platform that helps users track expens
 - Express.js
 - PostgreSQL
 - Prisma ORM
-- JWT
-- Zod
+- JWT Authentication
+- Zod Validation
+- Gemini AI API
 - Docker
 - bcrypt
 
@@ -69,30 +90,29 @@ An AI-powered personal finance management platform that helps users track expens
 
 # 📁 Project Structure
 
-```
+```text
 src/
 │
-├── controllers/
-├── services/
-├── routes/
-├── middlewares/
-├── validators/
-├── utils/
-├── lib/
 ├── constants/
+├── controllers/
+├── middlewares/
+├── providers/
+├── routes/
+├── services/
+├── utils/
+├── validators/
+├── lib/
 ```
 
 ---
 
-# 📡 API Endpoints
+# API Endpoints
 
 ## Authentication
 
 POST /api/auth/register
 
 POST /api/auth/login
-
-POST /api/auth/logout
 
 GET /api/auth/me
 
@@ -110,17 +130,31 @@ PATCH /api/transactions/:id
 
 DELETE /api/transactions/:id
 
+Supports:
+
+- Pagination
+- Search
+- Filtering
+
 ---
 
 ## Dashboard
 
 GET /api/dashboard/summary
 
-GET /api/dashboard/category-summary
+GET /api/dashboard/summary-by-category
 
-GET /api/dashboard/current-month
+GET /api/dashboard/current-month-summary
 
 GET /api/dashboard/monthly-summary
+
+---
+
+## AI
+
+GET /api/ai/insights
+
+Returns AI-generated financial analysis and recommendations.
 
 ---
 
@@ -147,7 +181,9 @@ DATABASE_URL=
 
 JWT_SECRET=
 
-PORT=
+GEMINI_API_KEY=
+
+GEMINI_MODEL=
 ```
 
 ## Run Docker
@@ -168,7 +204,7 @@ npx prisma generate
 npx prisma migrate dev
 ```
 
-## Start Server
+## Start Development Server
 
 ```bash
 npm run dev
@@ -178,20 +214,29 @@ npm run dev
 
 # 🚧 Upcoming Features
 
-- AI Financial Advisor
 - Budget Planning
-- Spending Trends
-- Smart Recommendations
-- Notifications
-- Frontend (Next.js)
+- Spending Trend Charts
+- Smart Budget Alerts
+- AI Chat Assistant
+- Frontend Dashboard (Next.js)
 - Deployment
 
 ---
 
-# 📌 Status
+# 📌 Current Status
 
-🟢 Backend ~90% Complete
+## ✅ Backend
 
-🔄 AI Features In Progress
+- Authentication
+- Transaction Management
+- Dashboard Analytics
+- AI Financial Advisor
 
-🚀 Build in Public
+## 🚧 In Progress
+
+- Frontend Dashboard
+- Deployment
+
+---
+
+⭐ If you like this project, consider giving it a star!
