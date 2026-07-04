@@ -1,6 +1,6 @@
 import DashboardService from "../services/dashboard.service.js";
 import asyncHandler from "../utils/asyncHandler.js";
-import AppError from "../utils/appError.js";
+
 
 class DashboardController {
   async getSummary(req, res) {

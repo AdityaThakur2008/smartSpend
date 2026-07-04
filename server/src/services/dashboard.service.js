@@ -91,9 +91,9 @@ class DashboardService {
 
     return {
       currentMonth: {
-        Income: monthlyIncome._sum.amount || 0,
-        Expense: monthlyExpense._sum.amount || 0,
-        Balance:
+        income: monthlyIncome._sum.amount || 0,
+        expense: monthlyExpense._sum.amount || 0,
+        balance:
           (monthlyIncome._sum.amount || 0) - (monthlyExpense._sum.amount || 0),
       },
     };
