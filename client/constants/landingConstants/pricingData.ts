@@ -1,0 +1,90 @@
+import { ShieldCheck, RefreshCw, Wallet, Gift } from "lucide-react";
+
+export const pricingPlans = [
+  {
+    id: 1,
+    name: "Free",
+    description: "Perfect for getting started",
+    monthlyPrice: "₹0",
+    yearlyPrice: "₹0",
+    buttonText: "Get Started Free",
+    buttonVariant: "light-primary",
+    isPopular: false,
+    features: [
+      "Unlimited transactions",
+      "Basic analytics",
+      "Budget tracking",
+      "AI spending insights (Limited)",
+    ],
+  },
+  {
+    id: 2,
+    name: "Pro",
+    description: "For individuals who want more",
+    monthlyPrice: "₹249",
+    yearlyPrice: "₹199",
+    buttonText: "Coming Soon",
+    buttonVariant: "solid-primary",
+    isPopular: true, 
+    features: [
+      "Everything in Free",
+      "Advanced analytics & reports",
+      "AI insights (Unlimited)",
+      "Custom budget goals",
+      "Export data (CSV, PDF)",
+      "Priority support",
+    ],
+  },
+  {
+    id: 3,
+    name: "Premium",
+    description: "For power users & families",
+    monthlyPrice: "₹499",
+    yearlyPrice: "₹399",
+    buttonText: "Future Release",
+    buttonVariant: "light-ai",
+    isPopular: false,
+    features: [
+      "Everything in Pro",
+      "Multi-account support",
+      "Advanced AI recommendations",
+      "Custom categories",
+      "Dedicated priority support",
+    ],
+  },
+];
+
+export const trustFeatures = [
+  {
+    id: 1,
+    icon: ShieldCheck,
+    title: "Secure & Private",
+    description: "Bank-level encryption to keep your data safe.",
+    iconColor: "text-success",
+    bgColor: "bg-success/10",
+  },
+  {
+    id: 2,
+    icon: RefreshCw,
+    title: "Cancel Anytime",
+    description: "Downgrade or cancel your plan at any time. No questions asked.",
+    iconColor: "text-primary",
+    bgColor: "bg-primary/10",
+  },
+  {
+    id: 3,
+    icon: Wallet,
+    title: "No Hidden Fees",
+    description: "What you see is what you pay. Always transparent.",
+    iconColor: "text-warning",
+    bgColor: "bg-warning/10",
+  },
+  {
+    id: 4,
+    icon: Gift,
+    title: "Free Forever Plan",
+    description: "Our free plan is free forever. No credit card required.",
+    iconColor: "text-ai",
+    bgColor: "bg-ai/10",
+  },
+];

@@ -7,7 +7,6 @@ export default function Logo() {
 
       <h1 className="text-xl font-bold tracking-tight">
         SmartSpend
-        <span className="text-primary">.ai</span>
       </h1>
     </div>
   );

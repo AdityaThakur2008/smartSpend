@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navLinks } from "@/constants/navigation";
+import { navLinks } from "@/constants/landingConstants/navigation";
 
 export default function NavbarLinks() {
   return (

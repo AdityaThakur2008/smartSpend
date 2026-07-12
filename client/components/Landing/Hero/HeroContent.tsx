@@ -12,7 +12,7 @@ export function HeroContent({ children }: HeroContentProps) {
         <span className="text-primary">Save Smarter.</span>
       </h1>
       <p className="text-muted-foreground text-lg sm:text-xl font-normal max-w-lg leading-relaxed">
-        SmartSpend.ai helps you take control of your money with AI insights, smart budgeting, and real-time tracking.
+        SmartSpend helps you take control of your money with AI insights, smart budgeting, and real-time tracking.
       </p>
     </div>
   );

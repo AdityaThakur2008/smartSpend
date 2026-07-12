@@ -5,7 +5,7 @@ import { HeroButtons } from "./HeroButtons";
 import { HeroDashboardPreview } from "./HeroDashboardPreview";
 import { ShieldCheck, CheckCircle2, BrainCircuit } from "lucide-react";
 
-export function Hero() {
+export default function Hero() {
   return (
     <section className="relative w-full min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center bg-background px-6 sm:px-12 lg:px-20 py-12 md:py-20 overflow-hidden">
       
