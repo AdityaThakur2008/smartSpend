@@ -17,9 +17,9 @@ class AuthService {
     return response.data;
   }
 
-  async me() {
+  async getCurrentUser() {
     const response = await Api.get("/auth/me");
-    return response.data;
+    return response.data.data;
   }
 }
 
