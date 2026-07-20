@@ -46,6 +46,18 @@ class AuthController {
       },
     });
   });
+
+  logout = asyncHandler(async (req, res) => {
+    res.clearCookie(COOKIE_NAME, {
+      sameSite: "strict",
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+    });
+    return res.status(200).json({
+      success: true,
+      message: "User logged out successfully",
+    });
+  });
 }
 
 export default new AuthController();

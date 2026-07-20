@@ -9,7 +9,7 @@ class AuthService {
 
   async login(data: LoginInput) {
     const response = await Api.post("/auth/login", data);
-    return response.data;
+    return response.data.data;
   }
 
   async logout() {

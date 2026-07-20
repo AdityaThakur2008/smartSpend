@@ -17,12 +17,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginInput } from "@/Validator/auth.Validator";
 import AuthService from "@/services/auth.Service";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";    
 import axios from "axios";
+import {useAuth} from "@/hooks/useAuth"
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const {setUser ,  setIsAuthenticated} = useAuth();
+
 
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
@@ -38,10 +41,12 @@ export default function LoginForm() {
 
   async function onSubmit(data: LoginInput) {
     try {
-      await AuthService.login(data);
+      const user = await AuthService.login(data);
+      setUser(user);
+       setIsAuthenticated(true)
       toast.success("Login successful! Welcome back.");
       form.reset();
-      router.push("/dashboard"); // Redirecting to dashboard after successful login
+      router.push("/dashboard"); 
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error(

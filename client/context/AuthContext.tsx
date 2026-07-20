@@ -2,6 +2,7 @@
 
 import  React , { createContext, useState , useEffect } from "react";
 import AuthService from "@/services/auth.Service";
+import { toast } from "sonner";
 
 interface User {
   id: string;
@@ -17,6 +18,7 @@ interface AuthContextType {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -46,15 +48,26 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     fetchUser();
 }, []);
 
+const logout = async () => {
+  try {
+    await AuthService.logout();
+    setUser(null);
+    setIsAuthenticated(false);
+  } catch ( _error) {
+    toast.error("Logout failed. Please try again.");
+  }
+}
+
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
         isAuthenticated,
-        setIsAuthenticated,
+        setIsAuthenticated,   
         isLoading,
         setIsLoading,
+        logout,
       }}>
       {children}
     </AuthContext.Provider>
