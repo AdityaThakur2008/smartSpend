@@ -17,15 +17,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginInput } from "@/Validator/auth.Validator";
 import AuthService from "@/services/auth.Service";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";    
+import { useRouter } from "next/navigation";
 import axios from "axios";
-import {useAuth} from "@/hooks/useAuth"
+import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
-  const {setUser ,  setIsAuthenticated} = useAuth();
-
+  const { setUser, setIsAuthenticated } = useAuth();
 
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
@@ -43,10 +42,10 @@ export default function LoginForm() {
     try {
       const user = await AuthService.login(data);
       setUser(user);
-       setIsAuthenticated(true)
+      setIsAuthenticated(true);
       toast.success("Login successful! Welcome back.");
       form.reset();
-      router.push("/dashboard"); 
+      router.push("/dashboard");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error(
@@ -96,7 +95,7 @@ export default function LoginForm() {
               disabled={isSubmitting}
               {...form.register("email")}
               type="email"
-              placeholder="hello@smartspend.com"
+              placeholder="john.doe@example.com"
               className="w-full pl-10 pr-4 py-2.5 bg-background dark:bg-input/10 border border-border rounded-xl text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-muted-foreground/50 disabled:opacity-50"
             />
           </div>
@@ -113,7 +112,6 @@ export default function LoginForm() {
             <label className="text-xs font-semibold text-foreground">
               Password
             </label>
-           
           </div>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

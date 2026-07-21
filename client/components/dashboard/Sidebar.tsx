@@ -2,60 +2,109 @@
 
 import React from "react";
 import Link from "next/link";
-import { LayoutDashboard, ReceiptText, Target, Sparkles, Settings, Wallet } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
-import {useRouter} from "next/navigation";
-import { Button } from "@/components/ui/button";
+import {
+  LayoutDashboard,
+  ReceiptText,
+  Target,
+  PieChart,
+  Sparkles,
+  CreditCard,
+  Settings,
+  LogOut,
+  Wallet,
+  ChevronRight,
+} from "lucide-react";
 
 export default function Sidebar() {
+  const { logout } = useAuth();
+  const router = useRouter();
 
-const { logout } = useAuth();
-const router = useRouter();
+  async function handleLogout() {
+    await logout();
+    router.replace("/login");
+  }
 
-    async function handleLogout() {
-        await logout();
-        router.replace("/login");
-    }
-    
   return (
     <aside className="w-64 h-screen border-r border-border/60 bg-card hidden md:flex flex-col flex-shrink-0 sticky top-0">
-      
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-border/60">
-        <Link href="/dashboard" className="flex items-center gap-2 text-xl font-extrabold text-foreground">
-          <div className="bg-primary p-1.5 rounded-lg">
-            <Wallet className="w-5 h-5 text-primary-foreground" />
+      <div className="h-20 flex items-center px-6 border-b border-border/60">
+        <Link
+          href="/dashboard"
+          className="flex items-center gap-2 text-xl font-extrabold text-foreground">
+          <div className="bg-primary p-1.5 rounded-lg shadow-sm">
+            <Wallet className="w-5 h-5 text-white" />
           </div>
           SmartSpend
         </Link>
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-1.5 text-sm font-medium">
-        <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary">
-          <LayoutDashboard className="w-5 h-5" /> Overview
+      <nav className="flex-1 overflow-y-auto py-4 px-4 text-sm font-medium">
+        <Link
+          href="/dashboard"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary mb-1">
+          <LayoutDashboard className="w-5 h-5" /> Dashboard
         </Link>
-        <Link href="/dashboard/transactions" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+        <Link
+          href="/dashboard/transactions"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors mb-1">
           <ReceiptText className="w-5 h-5" /> Transactions
         </Link>
-        <Link href="/dashboard/budgets" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-          <Target className="w-5 h-5" /> Budgets
+        <Link
+          href="/dashboard/budget"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors mb-1">
+          <Target className="w-5 h-5" /> Budget
         </Link>
-        <Link href="/dashboard/ai-insights" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
-          <Sparkles className="w-5 h-5 text-ai" /> AI Insights
+        
+       
+        <Link
+          href="/dashboard/ai-insights"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors mb-1">
+          <Sparkles className="w-5 h-5" /> AI Insights
+        </Link>
+        
+        <Link
+          href="/dashboard/settings"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+          <Settings className="w-5 h-5" /> Settings
         </Link>
       </nav>
 
-      {/* Bottom Settings */}
-      <div className="p-4 border-t border-border/60">
-        <Link href="/dashboard/settings" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors text-sm font-medium">
-          <Settings className="w-5 h-5" /> Settings
-        </Link>
-        <Button variant="ghost" className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors text-sm font-medium mt-2" onClick={handleLogout}>
-          <span>Logout</span>
-        </Button>
+      {/* Bottom Section */}
+      <div className="p-4 space-y-4 border-t border-border/40">
+        
+
+        {/* User Profile Dummy Placeholder */}
+        <div className="flex items-center justify-between p-2 rounded-xl hover:bg-secondary/50 cursor-pointer transition-colors border border-transparent hover:border-border/50">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-secondary overflow-hidden shrink-0">
+              <img
+                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aman&backgroundColor=c0aede"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-bold text-foreground">
+                Aman Verma
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                aman@example.com
+              </span>
+            </div>
+          </div>
+          <ChevronRight className="w-4 h-4 text-muted-foreground" />
+        </div>
+
+        {/* Actionable Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-3 py-2.5 w-full text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-xl transition-colors text-sm font-semibold cursor-pointer">
+          <LogOut className="w-5 h-5" /> Log out
+        </button>
       </div>
-      
     </aside>
   );
 }
