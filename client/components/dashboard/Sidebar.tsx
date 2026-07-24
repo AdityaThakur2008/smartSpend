@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
@@ -8,9 +8,9 @@ import {
   LayoutDashboard,
   ReceiptText,
   Target,
-  PieChart,
+ 
   Sparkles,
-  CreditCard,
+ 
   Settings,
   LogOut,
   Wallet,
@@ -28,7 +28,7 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 h-screen border-r border-border/60 bg-card hidden md:flex flex-col flex-shrink-0 sticky top-0">
-      {/* Logo */}
+     
       <div className="h-20 flex items-center px-6 border-b border-border/60">
         <Link
           href="/dashboard"
@@ -40,7 +40,7 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      {/* Navigation Links */}
+   
       <nav className="flex-1 overflow-y-auto py-4 px-4 text-sm font-medium">
         <Link
           href="/dashboard"
@@ -72,33 +72,31 @@ export default function Sidebar() {
         </Link>
       </nav>
 
-      {/* Bottom Section */}
       <div className="p-4 space-y-4 border-t border-border/40">
         
 
-        {/* User Profile Dummy Placeholder */}
+        
         <div className="flex items-center justify-between p-2 rounded-xl hover:bg-secondary/50 cursor-pointer transition-colors border border-transparent hover:border-border/50">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-secondary overflow-hidden shrink-0">
               <img
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aman&backgroundColor=c0aede"
+                src="https://api.dicebear.com/7.x/avataaars/svg?seed=jphn&backgroundColor=c0aede"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="flex flex-col">
               <span className="text-xs font-bold text-foreground">
-                Aman Verma
+                john deo
               </span>
               <span className="text-[10px] text-muted-foreground">
-                aman@example.com
+                johndeo@example.com
               </span>
             </div>
           </div>
           <ChevronRight className="w-4 h-4 text-muted-foreground" />
         </div>
 
-        {/* Actionable Logout Button */}
         <button
           onClick={handleLogout}
           className="flex items-center gap-3 px-3 py-2.5 w-full text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-xl transition-colors text-sm font-semibold cursor-pointer">

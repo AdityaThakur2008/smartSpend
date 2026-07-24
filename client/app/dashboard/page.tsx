@@ -1,78 +1,112 @@
-import React from "react";
-import StatCards from "@/components/dashboard/widgets/StatCards";
-import IncomeExpenseChart from "@/components/dashboard/widgets/IncomeExpenseChart";
-import CategoryChart from "@/components/dashboard/widgets/CategoryChart";
-import RecentTransactions from "@/components/dashboard/widgets/RecentTransactions";
-import MonthlyBudget from "@/components/dashboard/widgets/MonthlyBudget";
-import AiInsightsCard from "@/components/dashboard/widgets/AiInsightsCard"; // NEW
-import QuickActions from "@/components/dashboard/widgets/QuickActions"; // NEW
+"use client";
 
-export const metadata = {
-  title: "Dashboard - SmartSpend",
-};
+import { useEffect, useState } from "react";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import DashboardStats from "@/components/dashboard/DashboardStats";
+import IncomeExpenseChart from "@/components/dashboard/IncomeExpenseChart";
+import CategoryExpenseChart from "@/components/dashboard/CategoryExpenseChart";
+import CurrentMonthCard from "@/components/dashboard/CurrentMonthCard";
+
+import RecentTransactions from "@/components/dashboard/RecentTransactions";
+import DashboardSkeleton from "@/components/dashboard/DashboardSkeleton";
+import dashboardService from "@/services/dashboard.service";
+import type {
+  CategorySummary,
+  CurrentMonthSummary,
+  CurrentMonthSummaryResponse,
+  DashboardSummary,
+  DashboardSummaryByCategoryResponse,
+  DashboardSummaryResponse,
+  MonthlySummaryItem,
+  MonthlySummaryResponse,
+} from "@/types/dashboard";
 
 export default function DashboardPage() {
+  const [summary, setSummary] = useState<DashboardSummary | null>(null);
+  const [categories, setCategories] = useState<CategorySummary[]>([]);
+  const [currentMonth, setCurrentMonth] = useState<CurrentMonthSummary | null>(
+    null,
+  );
+  const [monthlySummary, setMonthlySummary] = useState<MonthlySummaryItem[]>(
+    [],
+  );
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadDashboardData = async () => {
+      try {
+        const [summaryRes, categoryRes, currentMonthRes, monthlyRes] =
+          await Promise.all([
+            dashboardService.getSummary(),
+            dashboardService.getSummaryByCategory(),
+            dashboardService.getCurrentMonthSummary(),
+            dashboardService.getMonthlySummary(),
+          ]);
+
+        setSummary((summaryRes as DashboardSummaryResponse).data);
+        setCategories((categoryRes as DashboardSummaryByCategoryResponse).data);
+        setCurrentMonth(
+          (currentMonthRes as CurrentMonthSummaryResponse).data ?? null,
+        );
+        setMonthlySummary((monthlyRes as MonthlySummaryResponse).data);
+      } catch (error) {
+        console.error("Failed to load dashboard data", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void loadDashboardData();
+  }, []);
+
+  if (loading) {
+    return <DashboardSkeleton />;
+  }
+
   return (
     <div className="space-y-6 pb-10">
-      
-      <div className="flex items-center justify-between mb-2">
-        <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-      </div>
+      <DashboardHeader
+        title="Dashboard"
+        description="Track your financial health at a glance."
+      />
 
-      {/* Top 4 Stats */}
-      <StatCards />
+      <DashboardStats summary={summary} loading={loading} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* ROW 1 */}
-        <div className="lg:col-span-2 bg-card border border-border/50 rounded-2xl p-6 shadow-sm flex flex-col">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-foreground">Income vs Expense</h3>
-            <span className="px-3 py-1 bg-secondary rounded-lg text-xs font-semibold cursor-pointer">This Month v</span>
+      <div className="grid gap-6 lg:grid-cols-3">
+        <section className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm lg:col-span-2">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-foreground">
+              Income vs Expense
+            </h2>
           </div>
-          <IncomeExpenseChart />
-        </div>
-        <div className="lg:col-span-1 bg-card border border-border/50 rounded-2xl p-6 shadow-sm flex flex-col">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-foreground">Spending by Category</h3>
-            <span className="px-3 py-1 bg-secondary rounded-lg text-xs font-semibold cursor-pointer">This Month v</span>
+          <IncomeExpenseChart data={monthlySummary} />
+        </section>
+
+        <section className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-foreground">
+              Spending by Category
+            </h2>
           </div>
-          <CategoryChart />
-        </div>
+          <CategoryExpenseChart data={categories} />
+        </section>
 
-        {/* ROW 2 */}
-        <div className="lg:col-span-2 bg-card border border-border/50 rounded-2xl p-6 shadow-sm flex flex-col">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-bold text-foreground">Recent Transactions</h3>
-            <button className="px-3 py-1 border border-border/50 hover:bg-secondary rounded-lg text-xs font-semibold transition-colors">
-              View All
-            </button>
+        <section className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm lg:col-span-2">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-foreground">
+              Recent Transactions
+            </h2>
           </div>
-          <RecentTransactions />
-        </div>
-        <div className="lg:col-span-1 bg-card border border-border/50 rounded-2xl p-6 shadow-sm flex flex-col">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-bold text-foreground">Monthly Budget</h3>
-            <button className="px-3 py-1 border border-border/50 hover:bg-secondary rounded-lg text-xs font-semibold transition-colors">
-              View All
-            </button>
-          </div>
-          <MonthlyBudget />
-        </div>
+          <RecentTransactions
+            transactions={summary?.recentTransactions ?? []}
+            loading={loading}
+          />
+        </section>
 
-        {/* ROW 3 (NEW) */}
-        <div className="lg:col-span-2 bg-gradient-to-r from-ai/5 to-transparent border border-ai/20 rounded-2xl p-6 shadow-sm flex flex-col relative overflow-hidden">
-          <h3 className="font-bold text-foreground flex items-center gap-2">
-             ✨ AI Insights
-          </h3>
-          <AiInsightsCard />
-        </div>
-
-        <div className="lg:col-span-1 bg-card border border-border/50 rounded-2xl p-6 shadow-sm flex flex-col">
-          <h3 className="font-bold text-foreground">Quick Actions</h3>
-          <QuickActions />
-        </div>
-
+        <section className="space-y-4">
+          <CurrentMonthCard summary={currentMonth} loading={loading} />
+        </section>
       </div>
     </div>
   );

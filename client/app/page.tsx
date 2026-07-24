@@ -16,6 +16,7 @@ export default function HomePage() {
       router.replace("/dashboard");
     }
   }, [isLoading, isAuthenticated, router]);
+  
 
  if (isLoading) {
     return <Loader className="animate-spin " size={48} />;
