@@ -34,6 +34,17 @@ class TransactionService {
     const response = await Api.post<SingleTransactionResponse>("/transactions", data);
     return response.data;
   }
+ 
+  async getTransactionById(id: string) {
+    const response = await Api.get(`/transactions/${id}`);
+    return response.data;
+  }
+
+
+  async updateTransaction(id: string, data: any) {
+    const response = await Api.patch(`/transactions/${id}`, data); 
+    return response.data;
+  }
 
   async deleteTransaction(id: string): Promise<SingleTransactionResponse> {
     const response = await Api.delete<SingleTransactionResponse>(`/transactions/${id}`);

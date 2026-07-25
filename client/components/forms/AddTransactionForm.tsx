@@ -11,6 +11,7 @@ import {
 interface AddTransactionFormProps {
   formData: any;
   loading: boolean;
+  isEdit?: boolean;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
   handleTypeChange: (type: "INCOME" | "EXPENSE") => void;
   handleSubmit: (e: React.FormEvent) => void;
@@ -18,7 +19,8 @@ interface AddTransactionFormProps {
 
 export default function AddTransactionForm({ 
   formData, 
-  loading, 
+  loading,
+  isEdit, 
   handleChange, 
   handleTypeChange, 
   handleSubmit 
@@ -162,13 +164,14 @@ export default function AddTransactionForm({
           >
             Cancel
           </button>
-          <button 
+         <button 
             type="submit" 
             disabled={loading}
             className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} 
-            {loading ? "Saving..." : "Save Transaction"}
+           
+            {loading ? "Saving..." : isEdit ? "Update Transaction" : "Save Transaction"}
           </button>
         </div>
       </form>
