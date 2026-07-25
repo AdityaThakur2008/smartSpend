@@ -28,7 +28,7 @@ const TransactionHeader = ({ title, description }: TransactionHeaderProps) => {
 
       
       <Button
-        onClick={() => router.push("/dashboard/transactions/new")}
+        onClick={() => router.push("/dashboard/add-transaction")}
         className="inline-flex items-center gap-2 bg-primary hover:bg-primary/95 text-primary-foreground font-semibold shadow-sm shadow-primary/20 transition-all rounded-xl px-4 py-2.5 active:scale-98 cursor-pointer self-start sm:self-auto">
         <Plus className="w-4 h-4 stroke-[2.5]" />
         <span>Add Transaction</span>

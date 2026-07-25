@@ -18,25 +18,25 @@ import {
 export default function Sidebar() {
   const { logout } = useAuth();
   const router = useRouter();
-  const pathname = usePathname(); 
+  const pathname = usePathname();
 
   async function handleLogout() {
     await logout();
     router.replace("/login");
   }
 
-
   const getLinkClass = (path: string) => {
-    const baseClass = "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors mb-1 text-sm font-medium";
+    const baseClass =
+      "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors mb-1 text-sm font-medium";
     const activeClass = "bg-primary/10 text-primary";
-    const inactiveClass = "text-muted-foreground hover:bg-secondary hover:text-foreground";
-    
+    const inactiveClass =
+      "text-muted-foreground hover:bg-secondary hover:text-foreground";
+
     return `${baseClass} ${pathname === path ? activeClass : inactiveClass}`;
   };
 
   return (
     <aside className="w-64 h-screen border-r border-border/60 bg-card hidden md:flex flex-col flex-shrink-0 sticky top-0">
-     
       <div className="h-20 flex items-center px-6 border-b border-border/60">
         <Link
           href="/dashboard"
@@ -52,23 +52,33 @@ export default function Sidebar() {
         <Link href="/dashboard" className={getLinkClass("/dashboard")}>
           <LayoutDashboard className="w-5 h-5" /> Dashboard
         </Link>
-        
-        <Link href="/dashboard/transactions" className={getLinkClass("/dashboard/transactions")}>
+
+        <Link
+          href="/dashboard/transactions"
+          className={getLinkClass("/dashboard/transactions")}>
           <ReceiptText className="w-5 h-5" /> Transactions
         </Link>
-        <Link href="/dashboard/transactions/new" className={getLinkClass("/dashboard/transactions/new")}>
+        <Link
+          href="/dashboard/add-transaction"
+          className={getLinkClass("/dashboard/add-transaction")}>
           <Plus className="w-5 h-5" /> Transactions
         </Link>
-        
-        <Link href="/dashboard/budget" className={getLinkClass("/dashboard/budget")}>
+
+        <Link
+          href="/dashboard/budget"
+          className={getLinkClass("/dashboard/budget")}>
           <Target className="w-5 h-5" /> Budget
         </Link>
-        
-        <Link href="/dashboard/ai-insights" className={getLinkClass("/dashboard/ai-insights")}>
+
+        <Link
+          href="/dashboard/ai-insights"
+          className={getLinkClass("/dashboard/ai-insights")}>
           <Sparkles className="w-5 h-5" /> AI Insights
         </Link>
-        
-        <Link href="/dashboard/settings" className={getLinkClass("/dashboard/settings")}>
+
+        <Link
+          href="/dashboard/settings"
+          className={getLinkClass("/dashboard/settings")}>
           <Settings className="w-5 h-5" /> Settings
         </Link>
       </nav>

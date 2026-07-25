@@ -1,7 +1,8 @@
 
-import { ShoppingCart, Briefcase, Coffee, Car, CreditCard, Ticket, Shirt, Activity, Zap, FileText } from "lucide-react";
+import { ShoppingCart, Briefcase,  Car,  Ticket, Shirt, Activity, Zap, FileText } from "lucide-react";
 import TransactionActions from "./TransactionActions";
 import { format } from "date-fns";
+import { formatCurrency} from "@/utils/fomatter"
 
 
 const getCategoryStyles = (category: string) => {
@@ -81,7 +82,7 @@ export default function TransactionTable({ transactions }: TransactionTableProps
                     </span>
                   </td>
                   <td className={`px-6 py-4 text-right font-bold ${isIncome ? 'text-emerald-500' : 'text-red-500'}`}>
-                    {isIncome ? "+" : "-"}${Math.abs(tx.amount).toFixed(2)}
+                    {isIncome ? "+" : "-"}{formatCurrency(Math.abs(tx.amount))}
                   </td>
                   <td className="px-6 py-4 text-center">
                     <TransactionActions transactionId={tx.id} />

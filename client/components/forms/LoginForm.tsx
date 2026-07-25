@@ -60,7 +60,7 @@ export default function LoginForm() {
 
   return (
     <div className="w-full max-w-md mx-auto bg-card border border-border/60 rounded-[2rem] p-8 md:p-10 shadow-2xl dark:shadow-none dark:border-border">
-      {/* Brand / Logo */}
+   
       <div className="flex justify-center mb-8">
         <Link
           href="/"
@@ -72,7 +72,7 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      {/* Header */}
+    
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-foreground">Welcome back</h2>
         <p className="text-sm text-muted-foreground mt-2">
@@ -80,7 +80,7 @@ export default function LoginForm() {
         </p>
       </div>
 
-      {/* Form Fields */}
+      
       <form className="space-y-5" onSubmit={form.handleSubmit(onSubmit)}>
         {/* Email */}
         <div className="space-y-1.5">
@@ -106,7 +106,7 @@ export default function LoginForm() {
           )}
         </div>
 
-        {/* Password */}
+       
         <div className="space-y-1.5">
           <div className="flex items-center justify-between px-1">
             <label className="text-xs font-semibold text-foreground">
@@ -143,7 +143,7 @@ export default function LoginForm() {
           )}
         </div>
 
-        {/* Submit Button */}
+       
         <button
           disabled={isSubmitting}
           type="submit"
@@ -160,7 +160,7 @@ export default function LoginForm() {
         </button>
       </form>
 
-      {/* Footer / Register Link */}
+     
       <p className="text-center text-sm text-muted-foreground mt-6">
         Don't have an account?{" "}
         <Link
