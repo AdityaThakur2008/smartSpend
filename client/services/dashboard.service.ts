@@ -1,6 +1,6 @@
 import Api from "@/lib/axios";
 import type {
-  AIInsightsResponse,
+ 
   CurrentMonthSummaryResponse,
   DashboardSummaryByCategoryResponse,
   DashboardSummaryResponse,

@@ -1,30 +1,38 @@
 "use client";
 
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation"; // usePathname import kiya
 import { useAuth } from "@/hooks/useAuth";
 import {
   LayoutDashboard,
   ReceiptText,
   Target,
- 
   Sparkles,
- 
   Settings,
   LogOut,
   Wallet,
   ChevronRight,
+  Plus,
 } from "lucide-react";
 
 export default function Sidebar() {
   const { logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname(); 
 
   async function handleLogout() {
     await logout();
     router.replace("/login");
   }
+
+
+  const getLinkClass = (path: string) => {
+    const baseClass = "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors mb-1 text-sm font-medium";
+    const activeClass = "bg-primary/10 text-primary";
+    const inactiveClass = "text-muted-foreground hover:bg-secondary hover:text-foreground";
+    
+    return `${baseClass} ${pathname === path ? activeClass : inactiveClass}`;
+  };
 
   return (
     <aside className="w-64 h-screen border-r border-border/60 bg-card hidden md:flex flex-col flex-shrink-0 sticky top-0">
@@ -40,42 +48,32 @@ export default function Sidebar() {
         </Link>
       </div>
 
-   
-      <nav className="flex-1 overflow-y-auto py-4 px-4 text-sm font-medium">
-        <Link
-          href="/dashboard"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary mb-1">
+      <nav className="flex-1 overflow-y-auto py-4 px-4">
+        <Link href="/dashboard" className={getLinkClass("/dashboard")}>
           <LayoutDashboard className="w-5 h-5" /> Dashboard
         </Link>
-        <Link
-          href="/dashboard/transactions"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors mb-1">
+        
+        <Link href="/dashboard/transactions" className={getLinkClass("/dashboard/transactions")}>
           <ReceiptText className="w-5 h-5" /> Transactions
         </Link>
-        <Link
-          href="/dashboard/budget"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors mb-1">
+        <Link href="/dashboard/transactions/new" className={getLinkClass("/dashboard/transactions/new")}>
+          <Plus className="w-5 h-5" /> Transactions
+        </Link>
+        
+        <Link href="/dashboard/budget" className={getLinkClass("/dashboard/budget")}>
           <Target className="w-5 h-5" /> Budget
         </Link>
         
-       
-        <Link
-          href="/dashboard/ai-insights"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors mb-1">
+        <Link href="/dashboard/ai-insights" className={getLinkClass("/dashboard/ai-insights")}>
           <Sparkles className="w-5 h-5" /> AI Insights
         </Link>
         
-        <Link
-          href="/dashboard/settings"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
+        <Link href="/dashboard/settings" className={getLinkClass("/dashboard/settings")}>
           <Settings className="w-5 h-5" /> Settings
         </Link>
       </nav>
 
       <div className="p-4 space-y-4 border-t border-border/40">
-        
-
-        
         <div className="flex items-center justify-between p-2 rounded-xl hover:bg-secondary/50 cursor-pointer transition-colors border border-transparent hover:border-border/50">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-secondary overflow-hidden shrink-0">

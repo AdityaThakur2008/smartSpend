@@ -57,6 +57,8 @@ export interface ApiResponse<T> {
   data: T;
 }
 
+
+
 export type DashboardSummaryResponse = ApiResponse<DashboardSummary>;
 export type DashboardSummaryByCategoryResponse = ApiResponse<CategorySummary[]>;
 export type CurrentMonthSummaryResponse = ApiResponse<CurrentMonthSummary>;

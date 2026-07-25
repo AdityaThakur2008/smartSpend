@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import DashboardStats from "@/components/dashboard/DashboardStats";
-import IncomeExpenseChart from "@/components/dashboard/IncomeExpenseChart";
-import CategoryExpenseChart from "@/components/dashboard/CategoryExpenseChart";
-import CurrentMonthCard from "@/components/dashboard/CurrentMonthCard";
-
-import RecentTransactions from "@/components/dashboard/RecentTransactions";
-import DashboardSkeleton from "@/components/dashboard/DashboardSkeleton";
+import { toast } from "sonner";
+import DashboardHeader from "@/components/dashboard/wigets/DashboardHeader";
+import DashboardStats from "@/components/dashboard/wigets/DashboardStats";
+import IncomeExpenseChart from "@/components/dashboard/wigets/IncomeExpenseChart";
+import CategoryExpenseChart from "@/components/dashboard/wigets/CategoryExpenseChart";
+import CurrentMonthCard from "@/components/dashboard/wigets/CurrentMonthCard";
+import RecentTransactions from "@/components/dashboard/wigets/RecentTransactions";
+import DashboardSkeleton from "@/components/dashboard/wigets/DashboardSkeleton";
 import dashboardService from "@/services/dashboard.service";
 import type {
   CategorySummary,
@@ -51,7 +51,8 @@ export default function DashboardPage() {
         );
         setMonthlySummary((monthlyRes as MonthlySummaryResponse).data);
       } catch (error) {
-        console.error("Failed to load dashboard data", error);
+        toast.error("Failed to load dashboard data. Please refresh the page.");
+
       } finally {
         setLoading(false);
       }
