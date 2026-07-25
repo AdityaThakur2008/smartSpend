@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { DateRange } from "react-day-picker";
@@ -11,23 +11,24 @@ import TransactionTable from "@/components/dashboard/transactions/TransactionTab
 import TransactionPagination from "@/components/dashboard/transactions/TransactionPagination";
 import { TransactionType, TransactionCategory } from "@/types/dashboard";
 import TransactionService from "@/services/transaction.service";
-import { useDebounce } from "@/hooks/useDebounce"; 
+import { useDebounce } from "@/hooks/useDebounce";
 
 export default function TransactionPage() {
-
   const [search, setSearch] = useState("");
   const [type, setType] = useState<TransactionType | "ALL">("ALL");
   const [category, setCategory] = useState<TransactionCategory | "ALL">("ALL");
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
 
- 
   const debouncedSearch = useDebounce(search, 500);
 
-  
   const [transactions, setTransactions] = useState<any[]>([]);
-  const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 });
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 1,
+  });
   const [loading, setLoading] = useState(true);
-
 
   const fetchTransactions = async (currentPage = 1) => {
     try {
@@ -37,7 +38,7 @@ export default function TransactionPage() {
         limit: 10,
         type,
         category,
-        search: debouncedSearch, 
+        search: debouncedSearch,
       });
 
       if (res.success) {
@@ -51,7 +52,6 @@ export default function TransactionPage() {
     }
   };
 
- 
   useEffect(() => {
     fetchTransactions(1);
   }, [debouncedSearch, type, category]); // Ab typing rokne ke 500ms baad hi API call hogi!
@@ -75,30 +75,32 @@ export default function TransactionPage() {
         title="Transactions"
         description="View and manage all your income and expenses"
       />
-      
+
       <TransactionFilters
         searchValue={search}
         typeValue={type}
         categoryValue={category}
         date={dateRange}
-        onSearchChange={setSearch} 
+        onSearchChange={setSearch}
         onTypeChange={setType}
         onCategoryChange={setCategory}
         onDateChange={setDateRange}
         onReset={handleReset}
       />
-      
-      
+
       {loading ? (
         <div className="flex h-64 items-center justify-center bg-card border border-border/50 rounded-2xl">
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       ) : (
         <>
-          <TransactionTable transactions={transactions} />
-          
+          <TransactionTable
+            transactions={transactions}
+            onDeleteSuccess={() => fetchTransactions(pagination.page)}
+          />
+
           {transactions.length > 0 && (
-            <TransactionPagination 
+            <TransactionPagination
               currentPage={pagination.page}
               totalPages={pagination.totalPages}
               totalItems={pagination.total}

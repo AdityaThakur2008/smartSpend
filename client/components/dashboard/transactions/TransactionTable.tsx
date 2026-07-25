@@ -21,9 +21,10 @@ const getCategoryStyles = (category: string) => {
 interface TransactionTableProps {
   
   transactions: any[]; 
+  onDeleteSuccess?: () => void
 }
 
-export default function TransactionTable({ transactions }: TransactionTableProps) {
+export default function TransactionTable({ transactions ,onDeleteSuccess}: TransactionTableProps) {
   if (!transactions || transactions.length === 0) {
     return (
       <div className="w-full bg-card border border-border/50 rounded-2xl p-10 flex flex-col items-center justify-center shadow-sm">
@@ -85,7 +86,8 @@ export default function TransactionTable({ transactions }: TransactionTableProps
                     {isIncome ? "+" : "-"}{formatCurrency(Math.abs(tx.amount))}
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <TransactionActions transactionId={tx.id} />
+                    <TransactionActions transactionId={tx.id} 
+                    onDeleteSuccess={onDeleteSuccess}/>
                   </td>
                 </tr>
               );

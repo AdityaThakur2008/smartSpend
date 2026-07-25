@@ -11,7 +11,7 @@ import {
   ArrowRight,
   Loader2,
 } from "lucide-react";
-import { SiGithub, SiGoogle } from "react-icons/si";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginInput } from "@/Validator/auth.Validator";

@@ -1,8 +1,8 @@
 
 
 
-import { format } from "date-fns"; // Date format karne ke liye
-import { DateRange } from "react-day-picker"; // Type import
+import { format } from "date-fns"; 
+import { DateRange } from "react-day-picker"; 
 import { Search, SlidersHorizontal, Folder, Calendar as CalendarIcon, RotateCcw } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
@@ -19,8 +19,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar"; // shadcn calendar
-import { cn } from "@/lib/utils"; // Shadcn utility class merging ke liye
+import { Calendar } from "@/components/ui/calendar"; 
+import { cn } from "@/lib/utils"; 
 
 import { TransactionType, TransactionCategory } from "@/types/dashboard";
 
@@ -126,7 +126,7 @@ export default function TransactionFilters({
                 variant="outline"
                 className={cn(
                   "h-11 px-4 bg-background/50 border-border/50 rounded-xl flex items-center gap-2 text-sm font-medium w-full md:w-[240px] justify-start cursor-pointer hover:bg-secondary hover:text-foreground transition-colors shadow-sm",
-                  !date && "text-muted-foreground" // Text color light agar select nahi hua hai
+                  !date && "text-muted-foreground" 
                 )}
               >
                 <CalendarIcon className="h-4 w-4 shrink-0" />
@@ -149,14 +149,14 @@ export default function TransactionFilters({
             <PopoverContent className="w-auto p-0" align="end">
               <Calendar
                 
-                mode="range" // Ye "range" set karna zaroori hai Date Range ke liye
+                mode="range" 
                 defaultMonth={date?.from}
                 selected={date}
                 onSelect={
                 
                   onDateChange
                 }
-                numberOfMonths={2} // Agar tumhe calendar mein 2 months ek saath dikhane hain (Optional)
+                numberOfMonths={2}
               />
             </PopoverContent>
           </Popover>

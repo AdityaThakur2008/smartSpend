@@ -15,7 +15,7 @@ import TransactionService from "@/services/transaction.service";
 
 interface TransactionActionMenuProps {
   transactionId: string;
-  onDeleteSuccess?: () => void; // Optional: Table ko refresh karne ke liye callback
+  onDeleteSuccess?: () => void; 
 }
 
 export default function TransactionActions({
@@ -25,12 +25,12 @@ export default function TransactionActions({
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
 
-  // 1. Edit Handler
+
   const handleEdit = () => {
     router.push(`/dashboard/edit-transaction/${transactionId}`);
   };
 
-  // 2. Delete Handler
+
   const handleDelete = async () => {
     try {
       setDeleting(true);
@@ -39,10 +39,8 @@ export default function TransactionActions({
       if (res.success) {
         toast.success("Transaction deleted successfully!");
         if (onDeleteSuccess) {
-          onDeleteSuccess(); // Table ka data turant refresh karne ke liye
-        } else {
-          router.refresh(); // Fallback page refresh
-        }
+          onDeleteSuccess(); 
+        } 
       } else {
         toast.error(res.message || "Failed to delete transaction.");
       }
