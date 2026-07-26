@@ -6,13 +6,13 @@ import { useAuth } from "@/hooks/useAuth";
 import {
   LayoutDashboard,
   ReceiptText,
-  Target,
   Sparkles,
   Settings,
   LogOut,
   Wallet,
   ChevronRight,
   Plus,
+  ChartArea
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -65,9 +65,9 @@ export default function Sidebar() {
         </Link>
 
         <Link
-          href="/dashboard/budget"
-          className={getLinkClass("/dashboard/budget")}>
-          <Target className="w-5 h-5" /> Budget
+          href="/dashboard/analytics"
+          className={getLinkClass("/dashboard/analytics")}>
+          <ChartArea className="w-5 h-5" /> Analytics
         </Link>
 
         <Link

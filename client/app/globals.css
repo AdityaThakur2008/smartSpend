@@ -6,6 +6,8 @@
 
 html {
   scroll-behavior: smooth;
+ font-size: 12px;
+ 
 }
 
 :root {
@@ -16,14 +18,14 @@ html {
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.147 0.004 49.3);
   /* SmartSpend Brand */
---primary: #2563eb;
---primary-foreground: #ffffff;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
 
-/* Finance Colors */
---success: #16a34a;
---danger: #dc2626;
---warning: #f59e0b;
---ai: #7c3aed;
+  /* Finance Colors */
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+  --ai: #7c3aed;
   --secondary: oklch(0.96 0.002 17.2);
   --secondary-foreground: oklch(0.214 0.009 43.1);
   --muted: oklch(0.96 0.002 17.2);
@@ -56,9 +58,9 @@ body {
 
 @theme inline {
   --color-success: var(--success);
---color-danger: var(--danger);
---color-warning: var(--warning);
---color-ai: var(--ai);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-ai: var(--ai);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -101,8 +103,6 @@ body {
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 }
-
-
 
 .dark {
   --background: oklch(0.147 0.004 49.3);

@@ -31,8 +31,10 @@ const CategoryExpenseChart = ({ data }: CategoryExpenseChartProps) => {
             <Pie
               data={data}
               dataKey="totalAmount"
-              innerRadius={60}
-              outerRadius={90}
+              cx="50%"
+              cy="50%"
+              innerRadius="60%"
+              outerRadius="90%"
               paddingAngle={2}>
               {data.map((entry, index) => (
                 <Cell
