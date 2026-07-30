@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image"
+
 import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -122,10 +122,11 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
             <div className="flex items-center justify-between p-2 rounded-xl hover:bg-secondary/50 cursor-pointer transition-colors border border-transparent hover:border-border/50">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full bg-secondary overflow-hidden shrink-0">
-                  <Image
+                  <img
                     src={`https://api.dicebear.com/7.x/initials/svg?seed=${user?.name}&backgroundColor=c0aede`}
                     alt="Profile"
                     className="w-full h-full object-cover"
+                    
                   />
                 </div>
                 <div className="flex flex-col">

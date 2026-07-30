@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image"
+
 
 import { useAuth } from "@/hooks/useAuth";
 
@@ -31,7 +31,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
       <div className="flex items-center gap-3 md:gap-4">
         <Link href="/dashboard/settings">
           <div className="w-8 h-8 rounded-full bg-secondary overflow-hidden shrink-0 border border-border cursor-pointer hover:ring-2 hover:ring-primary/50 transition-all ml-1">
-            <Image
+            <img
               src={`https://api.dicebear.com/7.x/initials/svg?seed=${user?.name}&backgroundColor=c0aede`}
               alt="Profile"
               className="w-full h-full object-cover"
