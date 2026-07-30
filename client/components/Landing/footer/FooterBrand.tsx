@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Wallet } from "lucide-react";
 import { SiNextdotjs, SiExpress, SiPrisma, SiPostgresql, SiGooglegemini, SiGithub } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
@@ -30,10 +30,10 @@ export default function FooterBrand() {
       <div>
         <p className="text-xs font-semibold text-muted-foreground mb-3">Connect with me</p>
         <div className="flex gap-3">
-          <a href="#" className="flex items-center gap-2 bg-background hover:bg-secondary border border-border px-3 py-1.5 rounded-md text-xs font-semibold transition-colors">
+          <a href="https://github.com/adityathakur2008" className="flex items-center gap-2 bg-background hover:bg-secondary border border-border px-3 py-1.5 rounded-md text-xs font-semibold transition-colors">
             <SiGithub className="w-3.5 h-3.5" /> GitHub
           </a>
-          <a href="#" className="flex items-center gap-2 bg-background hover:bg-secondary border border-border px-3 py-1.5 rounded-md text-xs font-semibold transition-colors">
+          <a href="https://www.linkedin.com/in/aditya-thakur08" className="flex items-center gap-2 bg-background hover:bg-secondary border border-border px-3 py-1.5 rounded-md text-xs font-semibold transition-colors">
             <FaLinkedin className="w-3.5 h-3.5 text-[#0A66C2]" /> LinkedIn
           </a>
         </div>

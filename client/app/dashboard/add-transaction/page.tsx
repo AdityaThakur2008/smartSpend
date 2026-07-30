@@ -57,7 +57,7 @@ export default function AddTransactionPage() {
       } else {
         toast.error(res.message || "Failed to add transaction.");
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

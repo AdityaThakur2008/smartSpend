@@ -27,7 +27,7 @@ export default function AIInsightsPage() {
 
         setData(parsedData);
       }
-    } catch (error) {
+    } catch  {
       toast.error("Failed to fetch insights");
     } finally {
       setLoading(false);

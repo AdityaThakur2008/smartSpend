@@ -28,8 +28,8 @@ class AuthService {
       id: newUser.id,
       name: newUser.name,
       email: newUser.email,
-      createdAt: user.createdAt,
-          totalTransaction: user.transactions,
+      createdAt: newUser.createdAt,
+          totalTransaction: newUser.transactions,
     };
   }
 

@@ -3,6 +3,7 @@ import { Heart, ImageIcon, ArrowRight } from "lucide-react";
 import CoreValues from "./CoreValues";
 import TechStack from "./TechStack";
 import WhyWeBuilt from "./WhyWeBuilt";
+import AboutDashboardPreview from "./AboutDashboardPreview"
 
 export default function About() {
   return (
@@ -33,15 +34,7 @@ export default function About() {
         </div>
 
         {/* Right Side: Image Placeholder */}
-        <div className="w-full relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-ai/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition duration-500"></div>
-          <div className="relative w-full aspect-[4/3] bg-secondary/30 flex flex-col items-center justify-center border border-border/50 rounded-2xl overflow-hidden shadow-xl">
-            <ImageIcon className="w-10 h-10 text-muted-foreground mb-3 opacity-50" />
-            <p className="text-sm text-muted-foreground font-medium">
-              About Section Dashboard Image
-            </p>
-          </div>
-        </div>
+        <AboutDashboardPreview/>
       </div>
 
       {/* 3. Bottom Big Container (Bento Style) */}

@@ -10,9 +10,13 @@ class AuthController {
     return res.status(201).json({
       success: true,
       message: "User registered successfully",
-      data: user,
-      createdAt: user.createdAt,
-          totalTransaction: user.transactions,
+      data: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+        totalTransaction: user.transactions,
+      },
     });
   });
 
@@ -50,7 +54,6 @@ class AuthController {
         name: user.name,
         email: user.email,
         createdAt: user.createdAt,
-          
       },
     });
   });

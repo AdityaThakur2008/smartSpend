@@ -1,5 +1,6 @@
-import React from "react";
+
 import { Rocket, Sparkles, PlayCircle, ShieldCheck, Lock, Zap } from "lucide-react";
+import Link from "next/link"
 
 export default function CtaContent() {
   return (
@@ -18,12 +19,13 @@ export default function CtaContent() {
       </p>
       
       <div className="flex flex-col sm:flex-row gap-4 pt-2">
+        <Link href="/register" >
         <button className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
           <Sparkles className="w-5 h-5" /> Get Started Free
-        </button>
+        </button></Link> <Link href="#how-it-works" >
         <button className="flex items-center justify-center gap-2 bg-background hover:bg-secondary text-foreground border border-border px-8 py-3.5 rounded-full font-bold transition-all">
           <PlayCircle className="w-5 h-5" /> See How It Works
-        </button>
+        </button></Link>
       </div>
 
       <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-border/50">
