@@ -28,6 +28,8 @@ class AuthService {
       id: newUser.id,
       name: newUser.name,
       email: newUser.email,
+      createdAt: user.createdAt,
+          totalTransaction: user.transactions,
     };
   }
 
@@ -53,6 +55,9 @@ class AuthService {
       name: user.name,
       email: user.email,
       accessToken,
+      createdAt: user.createdAt,
+          totalTransaction: user.transactions,
+
     };
   }
 }

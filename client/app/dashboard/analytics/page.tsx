@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Loader2 } from "lucide-react";
+
 import { toast } from "sonner";
 import DashboardService from "@/services/dashboard.service";
 
-// 🔥 Import all your new dumb components
+
 import AnalyticsHeader from "@/components/dashboard/analytics/AnalyticsHeader";
 import AnalyticsSummaryCards from "@/components/dashboard/analytics/AnalyticsSummaryCards";
 import AnalyticsBarChart from "@/components/dashboard/analytics/AnalyticsBarChart";
@@ -13,12 +13,12 @@ import AnalyticsDonutChart from "@/components/dashboard/analytics/AnalyticsDonut
 import AnalyticsLineChart from "@/components/dashboard/analytics/AnalyticsLineChart";
 import AnalyticsTopCategories from "@/components/dashboard/analytics/AnalyticsTopCategories";
 import AnalyticsQuickInsights from "@/components/dashboard/analytics/AnalyticsQuickInsights";
-
+import AnalyticsSkeleton from "@/components/skeletons/AnalyticsSkeleton"
 export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [timeRange, setTimeRange] = useState("30 Days");
 
-  // Data States
+ 
   const [summary, setSummary] = useState<any>(null);
   const [categoryData, setCategoryData] = useState<any[]>([]);
   const [monthlyData, setMonthlyData] = useState<any[]>([]);
@@ -49,14 +49,13 @@ export default function AnalyticsPage() {
 
   if (loading) {
     return (
-      <div className="flex h-[80vh] items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
+     <AnalyticsSkeleton/>
     );
   }
 
   return (
     <div className="space-y-6 pb-12 animate-in fade-in duration-500 max-w-7xl mx-auto">
+
       {/* 1. Header component */}
       <AnalyticsHeader timeRange={timeRange} setTimeRange={setTimeRange} />
 

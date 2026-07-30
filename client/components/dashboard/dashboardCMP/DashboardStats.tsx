@@ -1,13 +1,11 @@
 import { Wallet, TrendingUp, TrendingDown, PiggyBank } from "lucide-react";
 import type { DashboardSummary } from "@/types/dashboard";
-import{ formatCurrency}  from "@/utils/fomatter"
+import { formatCurrency } from "@/utils/formatter";
 
 interface DashboardStatsProps {
   summary: DashboardSummary | null;
   loading: boolean;
 }
-
-
 
 const DashboardStats = ({ summary, loading }: DashboardStatsProps) => {
   if (loading || !summary) {

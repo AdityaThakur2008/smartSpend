@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import type { MonthlySummaryItem } from "@/types/dashboard";
 
+
 interface IncomeExpenseChartProps {
   data: MonthlySummaryItem[];
 }

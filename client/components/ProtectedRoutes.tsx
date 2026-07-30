@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
+import  DahboardLayoutSkeleton from "@/components/skeletons/DahboardLayoutSkeleton"
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -19,7 +20,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   }, [isAuthenticated, isLoading, router]);
 
   if (isLoading) {
-    return <Loader className="animate-spin " size={48} />;
+    return <DahboardLayoutSkeleton />;
   }
 
   if (!isAuthenticated) {

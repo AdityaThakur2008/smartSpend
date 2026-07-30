@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import DashboardHeader from "@/components/dashboard/wigets/DashboardHeader";
-import DashboardStats from "@/components/dashboard/wigets/DashboardStats";
-import IncomeExpenseChart from "@/components/dashboard/wigets/IncomeExpenseChart";
-import CategoryExpenseChart from "@/components/dashboard/wigets/CategoryExpenseChart";
-import CurrentMonthCard from "@/components/dashboard/wigets/CurrentMonthCard";
-import RecentTransactions from "@/components/dashboard/wigets/RecentTransactions";
-import DashboardSkeleton from "@/components/dashboard/wigets/DashboardSkeleton";
+import DashboardHeader from "@/components/dashboard/dashboardCMP/DashboardHeader";
+import DashboardStats from "@/components/dashboard/dashboardCMP/DashboardStats";
+import IncomeExpenseChart from "@/components/dashboard/dashboardCMP/IncomeExpenseChart";
+import CategoryExpenseChart from "@/components/dashboard/dashboardCMP/CategoryExpenseChart";
+import CurrentMonthCard from "@/components/dashboard/dashboardCMP/CurrentMonthCard";
+import RecentTransactions from "@/components/dashboard/dashboardCMP/RecentTransactions";
+import DashboardSkeleton from "@/components/skeletons/DashboardSkeleton";
 import dashboardService from "@/services/dashboard.service";
 import type {
   CategorySummary,

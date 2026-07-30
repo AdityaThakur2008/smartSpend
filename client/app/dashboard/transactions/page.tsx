@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { DateRange } from "react-day-picker";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-
+import TransactionTableSkeleton from "@/components/skeletons/TransactionSkeleton";
 import TransactionHeader from "@/components/dashboard/transactions/TransactionHeader";
 import TransactionFilters from "@/components/dashboard/transactions/TransactionFilters";
 import TransactionTable from "@/components/dashboard/transactions/TransactionTable";
@@ -89,9 +89,7 @@ export default function TransactionPage() {
       />
 
       {loading ? (
-        <div className="flex h-64 items-center justify-center bg-card border border-border/50 rounded-2xl">
-          <Loader2 className="w-8 h-8 animate-spin text-primary" />
-        </div>
+        <TransactionTableSkeleton />
       ) : (
         <>
           <TransactionTable
