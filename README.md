@@ -1,4 +1,4 @@
-# SmartSpend.ai
+# SmartSpend
 
 An AI-powered personal finance management platform that helps users track expenses, analyze spending patterns, and receive personalized AI-powered financial insights.
 

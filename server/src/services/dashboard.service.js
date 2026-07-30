@@ -30,6 +30,7 @@ class DashboardService {
       totalIncome: totalIncome._sum.amount || 0,
       totalExpense: totalExpense._sum.amount || 0,
       totalBalance,
+      totalSavings: totalBalance,
       totalTransactions,
       recentTransactions: formatTransactions(recentTransactions),
     };

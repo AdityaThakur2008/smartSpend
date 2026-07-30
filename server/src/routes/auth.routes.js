@@ -14,5 +14,5 @@ router.post(
 );
 router.post("/login", validatorMiddleware(loginSchema), AuthController.login);
 router.get("/me", authMiddleware,AuthController.getCurrentUser);
-
+router.post("/logout", authMiddleware, AuthController.logout);
 export default router;
