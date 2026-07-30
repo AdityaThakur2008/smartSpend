@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   description:
     "Track expenses, analyze spending patterns and get AI-powered financial insights with SmartSpend.",
   openGraph: {
-    title: "SmartSpend",
+    title: "&quot;SmartSpend&quot;",
     description: "AI Powered Personal Finance Tracker",
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SmartSpend",
+    title: " &quot;SmartSpend&quot;",
     description: "AI Powered Personal Finance Tracker",
-    images: ["/og-image.png"], 
+    images: ["/og-image.png"],
   },
 };
 

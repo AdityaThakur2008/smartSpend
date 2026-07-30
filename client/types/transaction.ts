@@ -8,7 +8,7 @@ export interface ITransaction {
   type: TransactionType;
   category: TransactionCategory;
   note?: string;
-  date: string;
+  date?: Date | string;
 }
 
 

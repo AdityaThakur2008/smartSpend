@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { DateRange } from "react-day-picker";
-import { Loader2 } from "lucide-react";
+
 import { toast } from "sonner";
 import TransactionTableSkeleton from "@/components/skeletons/TransactionSkeleton";
 import TransactionHeader from "@/components/dashboard/transactions/TransactionHeader";
@@ -10,6 +10,7 @@ import TransactionFilters from "@/components/dashboard/transactions/TransactionF
 import TransactionTable from "@/components/dashboard/transactions/TransactionTable";
 import TransactionPagination from "@/components/dashboard/transactions/TransactionPagination";
 import { TransactionType, TransactionCategory } from "@/types/dashboard";
+import { ITransaction } from "@/types/transaction";
 import TransactionService from "@/services/transaction.service";
 import { useDebounce } from "@/hooks/useDebounce";
 
@@ -21,7 +22,7 @@ export default function TransactionPage() {
 
   const debouncedSearch = useDebounce(search, 500);
 
-  const [transactions, setTransactions] = useState<any[]>([]);
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
   const [pagination, setPagination] = useState({
     page: 1,
     limit: 10,
@@ -30,31 +31,38 @@ export default function TransactionPage() {
   });
   const [loading, setLoading] = useState(true);
 
-  const fetchTransactions = async (currentPage = 1) => {
-    try {
-      setLoading(true);
-      const res = await TransactionService.getTransactions({
-        page: currentPage,
-        limit: 10,
-        type,
-        category,
-        search: debouncedSearch,
-      });
+  const fetchTransactions = useCallback(
+    async (currentPage = 1) => {
+      try {
+        setLoading(true);
+        const res = await TransactionService.getTransactions({
+          page: currentPage,
+          limit: 10,
+          type,
+          category,
+          search: debouncedSearch,
+        });
 
-      if (res.success) {
-        setTransactions(res.result.data);
-        setPagination(res.result.pagination);
+        if (res.success) {
+          setTransactions(res.result.data);
+          setPagination(res.result.pagination);
+        }
+      } catch {
+        toast.error("Failed to fetch transactions. Please try again.");
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      toast.error("Failed to fetch transactions. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [category, debouncedSearch, type],
+  );
 
   useEffect(() => {
-    fetchTransactions(1);
-  }, [debouncedSearch, type, category]); // Ab typing rokne ke 500ms baad hi API call hogi!
+    const timeoutId = window.setTimeout(() => {
+      void fetchTransactions(1);
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [fetchTransactions]);
 
   const handleReset = () => {
     setSearch("");

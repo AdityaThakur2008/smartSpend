@@ -12,7 +12,7 @@ export function HeroDashboardPreview() {
       <div className="w-full bg-card border border-border rounded-xl shadow-2xl p-2 sm:p-4 overflow-hidden transform hover:scale-[1.01] transition-transform duration-300">
        
         <div className="relative aspect-[5/3] w-full bg-muted/30 rounded-lg overflow-hidden flex items-center justify-center border border-border/50">
-         <img src="dashboardImage.png" alt="Dashboard Preview" />
+         <Image src="/dashboardImage.png" alt="Dashboard Preview" fill/>
         </div>
       </div>
     </div>

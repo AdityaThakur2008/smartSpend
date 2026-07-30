@@ -23,25 +23,28 @@ export default function SettingsPage() {
 
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [loading, setLoading] = useState(true);
+  const theme = "dark";
+  const [currency, setCurrency] = useState(() => {
+    if (typeof window === "undefined") {
+      return "INR";
+    }
 
-  const [theme, setTheme] = useState("dark");
-  const [currency, setCurrency] = useState("INR");
+    return localStorage.getItem("currency") || "INR";
+  });
 
   useEffect(() => {
-    const savedCurrency = localStorage.getItem("currency") || "INR";
-    setCurrency(savedCurrency);
-
     const fetchStats = async () => {
       try {
         const summaryRes = await DashboardService.getSummary();
 
         setSummary((summaryRes as DashboardSummaryResponse).data);
-      } catch (error) {
+      } catch {
         toast.error("Failed to fetch user stats");
       } finally {
         setLoading(false);
       }
     };
+
     fetchStats();
   }, []);
 
@@ -70,7 +73,7 @@ export default function SettingsPage() {
 
       <AppPreferences
         theme={theme}
-        setTheme={setTheme}
+        
         currency={currency}
         handleCurrencyChange={handleCurrencyChange}
       />

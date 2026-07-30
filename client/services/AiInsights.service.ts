@@ -9,4 +9,6 @@ class AiInsightsService {
   }
 }
 
-export default new AiInsightsService();
+const aiInsightsService = new AiInsightsService();
+
+export default aiInsightsService;

@@ -11,6 +11,7 @@ import {
 import TransactionActions from "./TransactionActions";
 import { format } from "date-fns";
 import { formatCurrency } from "@/utils/formatter";
+import { ITransaction } from "@/types/transaction";
 
 const getCategoryStyles = (category: string) => {
   switch (category) {
@@ -42,7 +43,7 @@ const getCategoryStyles = (category: string) => {
 };
 
 interface TransactionTableProps {
-  transactions: any[];
+  transactions: ITransaction[];
   onDeleteSuccess?: () => void;
 }
 
@@ -88,7 +89,9 @@ export default function TransactionTable({
                   key={tx.id}
                   className="border-b border-border/20 hover:bg-secondary/20 transition-colors">
                   <td className="px-6 py-4 text-muted-foreground font-medium">
-                    {format(new Date(tx.date), "MMM dd, yyyy")}
+                    {tx.date
+                      ? format(new Date(tx.date), "MMM dd, yyyy")
+                      : "N/A"}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">

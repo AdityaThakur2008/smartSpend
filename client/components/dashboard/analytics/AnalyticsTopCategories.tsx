@@ -1,9 +1,10 @@
-"use client";
+
 
 import { formatCurrency } from "@/utils/formatter";
+import { CategorySummary } from "@/types/dashboard";
 
 interface AnalyticsTopCategoriesProps {
-  data: any[];
+  data: CategorySummary[];
 }
 
 const COLORS = [

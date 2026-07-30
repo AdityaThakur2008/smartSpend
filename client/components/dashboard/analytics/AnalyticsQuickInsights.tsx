@@ -8,10 +8,11 @@ import {
   CreditCard,
 } from "lucide-react";
 import { formatCurrency } from "@/utils/formatter";
+import { DashboardSummary, MonthlySummaryItem } from "@/types/dashboard";
 
 interface AnalyticsQuickInsightsProps {
-  summary: any;
-  monthlyData: any[];
+  summary: DashboardSummary | null;
+  monthlyData: MonthlySummaryItem[];
 }
 
 export default function AnalyticsQuickInsights({
@@ -19,11 +20,11 @@ export default function AnalyticsQuickInsights({
   monthlyData,
 }: AnalyticsQuickInsightsProps) {
   const highestIncome = monthlyData?.length
-    ? Math.max(...monthlyData.map((d: any) => d.income || 0))
+    ? Math.max(...monthlyData.map((d: MonthlySummaryItem) => d.income || 0))
     : 0;
 
   const highestExpense = monthlyData?.length
-    ? Math.max(...monthlyData.map((d: any) => d.expense || 0))
+    ? Math.max(...monthlyData.map((d: MonthlySummaryItem) => d.expense || 0))
     : 0;
 
   const totalExpense = summary?.totalExpense || 0;

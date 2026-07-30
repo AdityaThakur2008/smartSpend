@@ -1,6 +1,5 @@
 import Api from "@/lib/axios";
 import type {
- 
   CurrentMonthSummaryResponse,
   DashboardSummaryByCategoryResponse,
   DashboardSummaryResponse,
@@ -34,8 +33,7 @@ class DashboardService {
     );
     return response.data;
   }
-
-  
 }
+const dashboardService = new DashboardService();
 
-export default new DashboardService();
+export default dashboardService;

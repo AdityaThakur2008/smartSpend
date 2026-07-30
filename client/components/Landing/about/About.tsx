@@ -1,9 +1,9 @@
 import React from "react";
-import { Heart, ImageIcon, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 import CoreValues from "./CoreValues";
 import TechStack from "./TechStack";
 import WhyWeBuilt from "./WhyWeBuilt";
-import AboutDashboardPreview from "./AboutDashboardPreview"
+import AboutDashboardPreview from "./AboutDashboardPreview";
 
 export default function About() {
   return (
@@ -34,7 +34,7 @@ export default function About() {
         </div>
 
         {/* Right Side: Image Placeholder */}
-        <AboutDashboardPreview/>
+        <AboutDashboardPreview />
       </div>
 
       {/* 3. Bottom Big Container (Bento Style) */}
@@ -61,8 +61,8 @@ export default function About() {
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
                 Managing money is hard. Most apps are either too complicated,
-                lack insights, or don't help you make better decisions. We built
-                SmartSpend to change that.
+                lack insights, or don&apos;t help you make better decisions. We
+                built SmartSpend to change that.
               </p>
             </div>
             {/* Imported Component */}
@@ -76,7 +76,7 @@ export default function About() {
             <Heart className="w-5 h-5 text-ai fill-ai/20 shrink-0 mt-0.5" />
             <p className="text-xs text-muted-foreground font-medium">
               Thank you for choosing SmartSpend. <br />
-              Together, let's build a smarter financial future.
+              Together, let&apos;s build a smarter financial future.
             </p>
           </div>
           <button className="flex items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary px-6 py-2.5 rounded-full text-sm font-bold transition-colors">

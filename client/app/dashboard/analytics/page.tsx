@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import DashboardService from "@/services/dashboard.service";
 
-
 import AnalyticsHeader from "@/components/dashboard/analytics/AnalyticsHeader";
 import AnalyticsSummaryCards from "@/components/dashboard/analytics/AnalyticsSummaryCards";
 import AnalyticsBarChart from "@/components/dashboard/analytics/AnalyticsBarChart";
@@ -13,15 +12,19 @@ import AnalyticsDonutChart from "@/components/dashboard/analytics/AnalyticsDonut
 import AnalyticsLineChart from "@/components/dashboard/analytics/AnalyticsLineChart";
 import AnalyticsTopCategories from "@/components/dashboard/analytics/AnalyticsTopCategories";
 import AnalyticsQuickInsights from "@/components/dashboard/analytics/AnalyticsQuickInsights";
-import AnalyticsSkeleton from "@/components/skeletons/AnalyticsSkeleton"
+import AnalyticsSkeleton from "@/components/skeletons/AnalyticsSkeleton";
+import {
+  DashboardSummary,
+  CategorySummary,
+  MonthlySummaryItem,
+} from "@/types/dashboard";
 export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [timeRange, setTimeRange] = useState("30 Days");
 
- 
-  const [summary, setSummary] = useState<any>(null);
-  const [categoryData, setCategoryData] = useState<any[]>([]);
-  const [monthlyData, setMonthlyData] = useState<any[]>([]);
+  const [summary, setSummary] = useState<DashboardSummary | null>(null);
+  const [categoryData, setCategoryData] = useState<CategorySummary[]>([]);
+  const [monthlyData, setMonthlyData] = useState<MonthlySummaryItem[]>([]);
 
   useEffect(() => {
     const fetchAnalytics = async () => {
@@ -37,7 +40,7 @@ export default function AnalyticsPage() {
         setSummary(summaryRes?.data || summaryRes);
         setCategoryData(categoryRes?.data || categoryRes || []);
         setMonthlyData(monthlyRes?.data || monthlyRes || []);
-      } catch (error) {
+      } catch {
         toast.error("Failed to load analytics data.");
       } finally {
         setLoading(false);
@@ -48,14 +51,11 @@ export default function AnalyticsPage() {
   }, []);
 
   if (loading) {
-    return (
-     <AnalyticsSkeleton/>
-    );
+    return <AnalyticsSkeleton />;
   }
 
   return (
     <div className="space-y-6 pb-12 animate-in fade-in duration-500 max-w-7xl mx-auto">
-
       {/* 1. Header component */}
       <AnalyticsHeader timeRange={timeRange} setTimeRange={setTimeRange} />
 

@@ -1,23 +1,23 @@
 import { format } from "date-fns";
 import { formatCurrency } from "@/utils/formatter";
 import {
-  LogOut,
-  User,
   Mail,
   CalendarDays,
   Wallet,
   TrendingUp,
   TrendingDown,
-  Loader2,
-  Moon,
-  Sun,
-  Globe,
-  AlertTriangle,
 } from "lucide-react";
 import type { DashboardSummary } from "@/types/dashboard";
+import Image from "next/image"
+
+interface ProfileUser {
+  name?: string;
+  email?: string;
+  createdAt?: string | Date | null;
+}
 
 interface ProfileInfoProps {
-  user: any;
+  user: ProfileUser | null | undefined;
   summary: DashboardSummary | null;
 }
 
@@ -27,7 +27,7 @@ export default function ProfileInfo({ user, summary }: ProfileInfoProps) {
       {/* Basic Info */}
       <div className="flex items-center gap-4">
         <div className="w-16 h-16 rounded-full bg-secondary overflow-hidden border-2 border-background shadow-sm shrink-0">
-          <img
+          <Image
             src={`https://api.dicebear.com/7.x/initials/svg?seed=${user?.name}&backgroundColor=c0aede`}
             alt="Profile"
             className="w-full h-full object-cover"

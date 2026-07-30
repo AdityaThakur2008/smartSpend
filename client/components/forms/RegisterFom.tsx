@@ -183,12 +183,12 @@ export default function RegisterForm() {
           {isSubmitting ? (
             <>
               {" "}
-              <Loader2 className="w-4 h-4 animate-spin" /> "Creating Account..."
+              <Loader2 className="w-4 h-4 animate-spin" /> &quot;Creating Account...&quot;
             </>
           ) : (
             <>
               {" "}
-              "Create Account" <ArrowRight className="w-4 h-4" />
+              &quot;Create Account&quot; <ArrowRight className="w-4 h-4" />
             </>
           )}
         </button>

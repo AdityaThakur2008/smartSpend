@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { Loader } from "lucide-react";
+
 import { useRouter } from "next/navigation";
 import  DahboardLayoutSkeleton from "@/components/skeletons/DahboardLayoutSkeleton"
 

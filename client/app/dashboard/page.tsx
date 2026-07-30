@@ -50,7 +50,7 @@ export default function DashboardPage() {
           (currentMonthRes as CurrentMonthSummaryResponse).data ?? null,
         );
         setMonthlySummary((monthlyRes as MonthlySummaryResponse).data);
-      } catch (error) {
+      } catch {
         toast.error("Failed to load dashboard data. Please refresh the page.");
 
       } finally {

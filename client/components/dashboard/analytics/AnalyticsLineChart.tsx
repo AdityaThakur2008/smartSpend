@@ -1,5 +1,3 @@
-"use client";
-
 import {
   LineChart,
   Line,
@@ -11,9 +9,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { formatCurrency } from "@/utils/formatter";
+import { MonthlySummaryItem } from "@/types/dashboard";
 
 interface AnalyticsLineChartProps {
-  data: any[];
+  data: MonthlySummaryItem[];
 }
 
 export default function AnalyticsLineChart({ data }: AnalyticsLineChartProps) {
@@ -62,7 +61,9 @@ export default function AnalyticsLineChart({ data }: AnalyticsLineChartProps) {
                   border: "none",
                   boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
                 }}
-                formatter={(value: any) => formatCurrency(value)}
+                formatter={(value) => {
+                  return formatCurrency(Number(value));
+                }}
               />
 
               <Legend iconType="circle" wrapperStyle={{ paddingTop: "20px" }} />

@@ -11,9 +11,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { formatCurrency } from "@/utils/formatter";
+import { MonthlySummaryItem } from "@/types/dashboard";
 
 interface AnalyticsBarChartProps {
-  data: any[];
+  data: MonthlySummaryItem[];
 }
 
 export default function AnalyticsBarChart({ data }: AnalyticsBarChartProps) {
@@ -53,7 +54,9 @@ export default function AnalyticsBarChart({ data }: AnalyticsBarChartProps) {
                   border: "none",
                   boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
                 }}
-                formatter={(value: any) => formatCurrency(value)}
+                formatter={(value) => {
+                  return formatCurrency(Number(value));
+                }}
               />
               <Legend iconType="circle" wrapperStyle={{ paddingTop: "20px" }} />
               <Bar

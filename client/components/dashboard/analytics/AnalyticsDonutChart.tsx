@@ -9,9 +9,10 @@ import {
 } from "recharts";
 import { formatCurrency } from "@/utils/formatter";
 import { ChartColor } from "@/utils/chartColors";
+import { CategorySummary } from "@/types/dashboard";
 
 interface AnalyticsDonutChartProps {
-  data: any[];
+  data: CategorySummary[];
 }
 
 export default function AnalyticsDonutChart({
@@ -23,7 +24,7 @@ export default function AnalyticsDonutChart({
     <div className=" flex flex-col gap-6 xl:flex-row xl:items-center border border-border/50 rounded-2xl p-6 shadow-sm ">
       <div className="h-60 w-full xl:w-1/2">
         <ResponsiveContainer width="100%" height="100%">
-          <PieChart >
+          <PieChart>
             <Pie
               data={data}
               dataKey="totalAmount"

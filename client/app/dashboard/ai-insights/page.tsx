@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AIInsightsData } from "@/types/ai-insights";
-import AiInsightsService from "@/services/AiInsightsService";
+import AiInsightsService from "@/services/AiInsights.service";
 import {toast} from "sonner"
 
 import AiHeader from "@/components/dashboard/Ai-insights/AiHeader";

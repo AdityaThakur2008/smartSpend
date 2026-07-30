@@ -15,7 +15,7 @@ import TransactionService from "@/services/transaction.service";
 
 interface TransactionActionMenuProps {
   transactionId: string;
-  onDeleteSuccess?: () => void; 
+  onDeleteSuccess?: () => void;
 }
 
 export default function TransactionActions({
@@ -25,11 +25,9 @@ export default function TransactionActions({
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
 
-
   const handleEdit = () => {
     router.push(`/dashboard/edit-transaction/${transactionId}`);
   };
-
 
   const handleDelete = async () => {
     try {
@@ -39,12 +37,12 @@ export default function TransactionActions({
       if (res.success) {
         toast.success("Transaction deleted successfully!");
         if (onDeleteSuccess) {
-          onDeleteSuccess(); 
-        } 
+          onDeleteSuccess();
+        }
       } else {
         toast.error(res.message || "Failed to delete transaction.");
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong while deleting.");
     } finally {
       setDeleting(false);
@@ -54,10 +52,9 @@ export default function TransactionActions({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button 
+        <button
           disabled={deleting}
-          className="p-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50"
-        >
+          className="p-2 text-muted-foreground hover:bg-secondary rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50">
           {deleting ? (
             <Loader2 className="w-4 h-4 animate-spin text-primary" />
           ) : (
@@ -67,22 +64,19 @@ export default function TransactionActions({
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-40 bg-card border-border/50 rounded-xl shadow-lg"
-      >
-        <DropdownMenuItem 
+        className="w-40 bg-card border-border/50 rounded-xl shadow-lg">
+        <DropdownMenuItem
           onClick={handleEdit}
-          className="cursor-pointer flex items-center gap-2 py-2.5"
-        >
+          className="cursor-pointer flex items-center gap-2 py-2.5">
           <Edit2 className="w-4 h-4 text-muted-foreground" />
           <span className="font-medium text-sm">Edit</span>
         </DropdownMenuItem>
-        
+
         <DropdownMenuSeparator className="bg-border/50" />
-        
-        <DropdownMenuItem 
+
+        <DropdownMenuItem
           onClick={handleDelete}
-          className="cursor-pointer flex items-center gap-2 py-2.5 text-red-500 focus:text-red-500 focus:bg-red-500/10"
-        >
+          className="cursor-pointer flex items-center gap-2 py-2.5 text-red-500 focus:text-red-500 focus:bg-red-500/10">
           <Trash2 className="w-4 h-4" />
           <span className="font-medium text-sm">Delete</span>
         </DropdownMenuItem>
