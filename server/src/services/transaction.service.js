@@ -1,5 +1,5 @@
 import prisma from "../lib/prisma.js";
-import AppError from "../utils/appError.js";
+import AppError from "../utils/AppError.js";
 import { formatTransaction, formatTransactions } from "../utils/transactionFormatter.js";
 
 class TransactionService {
