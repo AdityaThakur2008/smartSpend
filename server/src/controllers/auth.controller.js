@@ -26,9 +26,9 @@ class AuthController {
     return res
       .status(200)
       .cookie(COOKIE_NAME, user.accessToken, {
-        sameSite: "strict",
+        sameSite: "none",
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000,
       })
       .json({
@@ -60,9 +60,9 @@ class AuthController {
 
   logout = asyncHandler(async (req, res) => {
     res.clearCookie(COOKIE_NAME, {
-      sameSite: "strict",
+      sameSite: "none",
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
     });
     return res.status(200).json({
       success: true,
